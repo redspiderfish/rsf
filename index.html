@@ -8,7 +8,8 @@
 	function getObj(id){
 		return document.getElementById(id);
 	}
-  var socket = io.connect('http://localhost');
+	var host = window.location.hostname;
+  var socket = io.connect(host);
   
   socket.on('news', function (data) {
 	var log = getObj("log");
