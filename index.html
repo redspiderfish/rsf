@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Testing Socket IO</title>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	function getObj(id){
+		return document.getElementById(id);
+	}
+  var socket = io.connect('http://localhost');
+  
+  socket.on('news', function (data) {
+	var log = getObj("log");
+	log.innerHTML += "Received: <br/>";
+	for(var i in data){
+		log.innerHTML += i + " : " + data[i];
+		log.innerHTML += "<br/>";
+	}
+    
+
+    socket.emit('my other event', { my: 'karen' });
+  });
+</script>
+</head>
+
+<body>
+	<p id="log"></p>
+
+</body>
+</html>
